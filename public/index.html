@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backlink Management SaaS</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="authView" class="auth-wrap" hidden>
+  <div class="card auth-card">
+    <h1 id="authTitle">Backlink Management</h1>
+    <p id="authHint" class="muted"></p>
+    <form id="authForm">
+      <label id="nameField">Full name <input id="authName" autocomplete="name"></label>
+      <label>Email <input id="authEmail" type="email" required autocomplete="email"></label>
+      <label>Password <input id="authPassword" type="password" required minlength="8" autocomplete="current-password"></label>
+      <label id="codeField" hidden>Two-factor code <input id="authCode" inputmode="numeric" autocomplete="one-time-code"></label>
+      <button type="submit" id="authSubmit" class="primary">Sign in</button>
+      <p id="authError" class="error"></p>
+    </form>
+    <p class="muted small" id="authSwitch"></p>
+  </div>
+</div>
+
+<div id="appView" hidden>
+  <header>
+    <div class="brand" id="workspaceName">Backlink Management</div>
+    <div class="header-right">
+      <span id="notifBadge" class="badge" title="Unread notifications"></span>
+      <span id="userInfo" class="muted"></span>
+      <button id="logoutBtn">Log out</button>
+    </div>
+  </header>
+  <div class="layout">
+    <nav id="sidebar"></nav>
+    <main id="main"><p class="muted">Loading…</p></main>
+  </div>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
