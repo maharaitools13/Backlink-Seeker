@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run test suite
+        run: npm test
+      - name: Smoke check (empty start)
+        run: |
+          DATABASE_PATH=/tmp/smoke.db PORT=39991 timeout 8 node src/server.js &
+          sleep 2
+          curl -sf http://localhost:39991/api/health
+          curl -sf http://localhost:39991/api/auth/setup | grep -q '"ownerExists":false'
